@@ -58,7 +58,7 @@ title_label = Text(parent=camera.ui, text="Title: ", position=bpm_input.position
 title_label.x -= 0.08
 title_label.y -= 0.05
 
-stars_input = TextField(parent=camera.ui, max_lines=1, text="5")
+stars_input = TextField(parent=camera.ui, max_lines=1, text="10")
 stars_input.position = note_preview.position
 stars_input.y -= 0.3
 stars_input.x -= 0.8
