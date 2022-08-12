@@ -5,6 +5,11 @@ from settings import SETTINGS
 
 mode = 1 # 0: view, 1: notes
 
+if SETTINGS.editor.sfx == "1":
+    sfx = True
+else:
+    sfx = False
+
 tja_editor_path = os.path.dirname(os.path.abspath(__file__))
 os.chdir(tja_editor_path)
 
@@ -33,6 +38,9 @@ note_large_kat = Texture("assets/note_large_kat.png")
 note_little_kat = Texture("assets/note_little_kat.png")
 note_little_unselected = Texture("assets/note_little_unselected.png")
 note_large_unselected = Texture("assets/note_large_unselected.png")
+
+sfx_don = Audio("Don.wav")
+sfx_kat = Audio("Katsu.wav")
 
 background = Entity(parent=camera.ui, model='quad', texture=f"assets/backgrounds/background_{bg_id}.png", scale=(window.aspect_ratio,1))
 
@@ -94,12 +102,16 @@ def input(key):
                       scale=0.07)
         e.position = note_preview.position
         notes.append(e)
+        if sfx:
+            sfx_don.play()
     # little kat
     if key == 'right mouse down':
         e = Entity(parent=camera.ui, model='quad', texture=note_little_kat,
                       scale=0.07)
         e.position = note_preview.position
         notes.append(e)
+        if sfx:
+            sfx_kat.play()
     
     # little roll
     if key == 'r':
@@ -107,6 +119,8 @@ def input(key):
                       scale=0.07)
         e.position = note_preview.position
         notes.append(e)
+        if sfx:
+            sfx_don.play()
 
     if held_keys['shift']:
         note_preview.scale = 0.11
@@ -117,12 +131,16 @@ def input(key):
                         scale=0.11)
             e.position = note_preview.position
             notes.append(e)
+            if sfx:
+                sfx_don.play()
         # large kat
         if key == 'right mouse down':
             e = Entity(parent=camera.ui, model='quad', texture=note_large_kat,
                         scale=0.11)
             e.position = note_preview.position
             notes.append(e)
+            if sfx:
+                sfx_kat.play()
 
         # large roll
         if key == 'r':
@@ -130,6 +148,8 @@ def input(key):
                         scale=0.11)
             e.position = note_preview.position
             notes.append(e)
+            if sfx:
+                sfx_don.play()
 
     else:
         note_preview.scale = 0.07
