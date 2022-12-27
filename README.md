@@ -1,3 +1,3 @@
 # FACE4TJA
 
-Finally a chart editor for tja files!
+Finally a chart editor for Taiko no Tatsujin!
